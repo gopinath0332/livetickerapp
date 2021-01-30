@@ -24,14 +24,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showLoader: true,
-                connectionEnabled: false
+                connectionStatus: null
             };
 
         case ACTION_TYPES.CONNECTION_ESTABLISHED:
             return {
                 ...state,
                 showLoader: true,
-                connectionEnabled: "success",
+                connectionStatus: "success",
                 message: ""
             }
 
@@ -40,10 +40,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showLoader: false,
-                connectionEnabled: "failed"
+                connectionStatus: "failed"
+            }
+        case ACTION_TYPES.CONNECTION_FAIL_REASON:
+            return {
+                ...state,
+                message: action.data
             }
         case ACTION_TYPES.ADD_BOOKS: {
-            let books = state.books.map(item => ({ ...item }));
+            let books = state.books.map(item => ({
+                ...item
+            }));
             if (action.data.length > maxLength) {
                 books = action.data.splice(action.data.length - maxLength, maxLength);
             } else if (books.length >= maxLength) {
@@ -54,11 +61,14 @@ const reducer = (state = initialState, action) => {
             }
             return {
                 ...state,
+                showLoader: false,
                 books
             }
         }
         case ACTION_TYPES.ADD_SELL_BOOKS: {
-            let sellBooks = state.sellBooks.map(item => ({ ...item }));
+            let sellBooks = state.sellBooks.map(item => ({
+                ...item
+            }));
             if (action.data.length > maxLength) {
                 sellBooks = action.data.splice(action.data.length - maxLength, maxLength);
             } else if (sellBooks.length >= maxLength) {
@@ -69,6 +79,7 @@ const reducer = (state = initialState, action) => {
             }
             return {
                 ...state,
+                showLoader: false,
                 sellBooks
             }
         }

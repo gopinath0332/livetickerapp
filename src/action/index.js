@@ -72,7 +72,7 @@ export const beingTransaction = () => dispatch => {
 }
 
 const getFormatedNumber = data => {
-    return +Number.parseFloat(data).toFixed(4);
+    return Math.abs(+Number.parseFloat(data).toFixed(4));
 }
 
 const getFormattedData = (data) => {

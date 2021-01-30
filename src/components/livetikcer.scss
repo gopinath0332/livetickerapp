@@ -68,30 +68,57 @@ $header-weight: 600;
         .sell-books-container {
             @include booksFlex
         }
-    }
 
-    .table {
-        display: flex;
-        flex-direction: column;
+        .table {
+            display: flex;
+            flex-direction: column;
 
-        .head-row {
-            @include rowStyles($hasHover:false);
+            .head-row {
+                @include rowStyles($hasHover:false);
 
-            .head-cell {
-                @include cellStyles;
-                font-size: 11px;
-                color: #A6AEB5;
-                font-weight: 500;
+                .head-cell {
+                    @include cellStyles;
+                    font-size: 11px;
+                    color: #A6AEB5;
+                    font-weight: 500;
+                }
             }
+
+            .row {
+                @include rowStyles($hasHover:true);
+
+                .cell {
+                    @include cellStyles;
+                }
+            }
+
         }
 
-        .row {
-            @include rowStyles($hasHover:true);
+        .loader {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 10px;
 
-            .cell {
-                @include cellStyles;
+            .spinner {
+                border: 2px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 2px solid #1f2325;
+                width: 10px;
+                height: 10px;
+                animation: spin 2s linear infinite;
+                margin-right: 5px;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
             }
         }
-
     }
 }

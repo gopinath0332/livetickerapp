@@ -30,6 +30,13 @@ class LiveTicker extends PureComponent {
                             <div className="head-cell">Price</div>
                         </div>
                         {
+                            (this.props.showLoader && this.props.books.length === 0) &&
+                            <div className="loader">
+                                <div className="spinner" />
+                            Loading...
+                            </div>
+                        }
+                        {
                             this.props.books.map(item => (
                                 <div className="row" key={item.id}>
                                     <div className="cell">{item.count}</div>
@@ -50,7 +57,14 @@ class LiveTicker extends PureComponent {
                             <div className="head-cell">Count </div>
                         </div>
                         {
-                            this.props.books.map(item => (
+                            (this.props.showLoader && this.props.sellBooks.length === 0) &&
+                            <div className="loader">
+                                <div className="spinner" />
+                            Loading...
+                            </div>
+                        }
+                        {
+                            this.props.sellBooks.map(item => (
                                 <div className="row" key={item.id}>
                                     <div className="cell">{item.price}</div>
                                     <div className="cell">{item.total}</div>
