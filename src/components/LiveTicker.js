@@ -16,14 +16,62 @@ class LiveTicker extends PureComponent {
     }
 
     render() {
-        return (<div>Live Ticker</div>)
+        return (<div className="container">
+            <div className="header">
+                order book <span className="sub-header">btc/usd</span>
+            </div>
+            <div className="table-container">
+                <div className="books-container">
+                    <div className="table">
+                        <div className="head-row">
+                            <div className="head-cell">Count </div>
+                            <div className="head-cell">Amount </div>
+                            <div className="head-cell">Total </div>
+                            <div className="head-cell">Price</div>
+                        </div>
+                        {
+                            this.props.books.map(item => (
+                                <div className="row" key={item.id}>
+                                    <div className="cell">{item.count}</div>
+                                    <div className="cell">{item.amount}</div>
+                                    <div className="cell">{item.total}</div>
+                                    <div className="cell">{item.price}</div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+                <div className="sell-books-container">
+                    <div className="table">
+                        <div className="head-row">
+                            <div className="head-cell">Price</div>
+                            <div className="head-cell">Total </div>
+                            <div className="head-cell">Amount </div>
+                            <div className="head-cell">Count </div>
+                        </div>
+                        {
+                            this.props.books.map(item => (
+                                <div className="row" key={item.id}>
+                                    <div className="cell">{item.price}</div>
+                                    <div className="cell">{item.total}</div>
+                                    <div className="cell">{item.amount}</div>
+                                    <div className="cell">{item.count}</div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>)
     }
 }
 
 const mapToProps = (state) => {
     return {
         showLoader: state.showLoader,
-        connectionStatus: state.connectionStatus
+        connectionStatus: state.connectionStatus,
+        books: state.books,
+        sellBooks: state.sellBooks
     }
 }
 

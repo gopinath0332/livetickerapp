@@ -22,9 +22,6 @@ const payload = {
     "symbol": "tBTCUSD"
 }
 
-// let books = [];
-// let sellBooks = [];
-
 export const beingTransaction = () => dispatch => {
     dispatch({
         type: ACTION_TYPES.BEGIN_CONNECTION
@@ -71,6 +68,7 @@ export const beingTransaction = () => dispatch => {
             (sellBooks.length > 0) && dispatch(addSellBooks(sellBooks));
         }
     }
+    return client;
 }
 
 const getFormattedData = (data) => {

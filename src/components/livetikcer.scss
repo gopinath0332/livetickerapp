@@ -1,0 +1,97 @@
+$text-color: white;
+$bg-color: #1b262d;
+$header-weight: 600;
+
+@mixin cellStyles {
+    flex: 4;
+    color: $text-color;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+@mixin booksFlex {
+    cursor: pointer;
+    flex: 1 1;
+}
+
+@mixin rowStyles($hasHover: false) {
+    display: flex;
+    min-height: 30px;
+    line-height: 20px;
+    cursor: default;
+
+    @if $hasHover {
+        &:hover {
+            background-color: #242D33;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.container {
+    color: $text-color;
+    margin: 2rem 2rem 0 2rem;
+    overflow: auto;
+    border: 1px solid #19232a;
+    border-radius: 5px;
+    background-color: $bg-color;
+    min-height: 80vh;
+
+    .header {
+        color: $text-color;
+        margin: 0;
+        height: 2rem;
+        text-transform: uppercase;
+        font-size: .9rem;
+        border-bottom: 1px solid #2A333A;
+        padding-left: 5px;
+        line-height: 2rem;
+        font-weight: $header-weight;
+
+        .sub-header {
+            color: gray;
+            font-weight: $header-weight;
+        }
+    }
+
+    .table-container {
+        display: flex;
+        justify-content: space-between;
+
+        .books-container {
+            @include booksFlex
+        }
+
+        .sell-books-container {
+            @include booksFlex
+        }
+    }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+
+        .head-row {
+            @include rowStyles($hasHover:false);
+
+            .head-cell {
+                @include cellStyles;
+                font-size: 11px;
+                color: #A6AEB5;
+                font-weight: 500;
+            }
+        }
+
+        .row {
+            @include rowStyles($hasHover:true);
+
+            .cell {
+                @include cellStyles;
+            }
+        }
+
+    }
+}
