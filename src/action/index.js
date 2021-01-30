@@ -71,6 +71,10 @@ export const beingTransaction = () => dispatch => {
     return client;
 }
 
+const getFormatedNumber = data => {
+    return +Number.parseFloat(data).toFixed(4);
+}
+
 const getFormattedData = (data) => {
     const books = [];
     const sellBooks = []
@@ -81,17 +85,17 @@ const getFormattedData = (data) => {
                 sellBooks.push({
                     price,
                     count,
-                    amount,
+                    amount: getFormatedNumber(amount),
                     id: uuidv4(),
-                    total: (count * amount)
+                    total: getFormatedNumber(count * amount)
                 });
             } else {
                 books.push({
                     price,
                     count,
-                    amount,
+                    amount: getFormatedNumber(amount),
                     id: uuidv4(),
-                    total: (count * amount)
+                    total: getFormatedNumber(count * amount)
                 });
             }
         });
@@ -101,17 +105,17 @@ const getFormattedData = (data) => {
             sellBooks.push({
                 price,
                 count,
-                amount,
+                amount: getFormatedNumber(amount),
                 id: uuidv4(),
-                total: (count * amount)
+                total: getFormatedNumber(count * amount)
             });
         } else {
             books.push({
                 price,
                 count,
-                amount,
+                amount: getFormatedNumber(amount),
                 id: uuidv4(),
-                total: (count * amount)
+                total: getFormatedNumber(count * amount)
             });
         }
     }
