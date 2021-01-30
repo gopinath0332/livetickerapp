@@ -11,7 +11,6 @@ export const ACTION_TYPES = {
     BEGIN_CONNECTION: "BEGIN_CONNECTION",
     CONNECTION_ESTABLISHED: "CONNECTION_ESTABLISHED",
     CONNECTION_FAILED: "CONNECTION_FAILED",
-    CONNECTION_FAIL_REASON: "CONNECTION_FAIL_REASON",
     ADD_BOOKS: "ADD_BOOKS",
     ADD_SELL_BOOKS: "ADD_SELL_BOOKS"
 }
@@ -46,16 +45,10 @@ export const beingTransaction = () => dispatch => {
     };
 
     client.onclose = (evt) => {
+        console.log("web socket close")
         if (evt.code !== 1000) {
             // try to make connection if connection is not closed properly.
             dispatch(beingTransaction());
-
-            if (!navigator.onLine) {
-                dispatch({
-                    type: ACTION_TYPES.CONNECTION_FAIL_REASON,
-                    data: "You are offline. Please connect to the Internet and try again."
-                });
-            }
         }
     };
 

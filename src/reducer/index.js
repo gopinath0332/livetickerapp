@@ -4,7 +4,6 @@ import {
 
 const initialState = {
     showLoader: true,
-    connectionStatus: null,
     books: [],
     sellBooks: [],
     message: ""
@@ -24,14 +23,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showLoader: true,
-                connectionStatus: null
             };
 
         case ACTION_TYPES.CONNECTION_ESTABLISHED:
             return {
                 ...state,
                 showLoader: true,
-                connectionStatus: "success",
                 message: ""
             }
 
@@ -40,12 +37,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 showLoader: false,
-                connectionStatus: "failed"
-            }
-        case ACTION_TYPES.CONNECTION_FAIL_REASON:
-            return {
-                ...state,
-                message: action.data
             }
         case ACTION_TYPES.ADD_BOOKS: {
             let books = state.books.map(item => ({
