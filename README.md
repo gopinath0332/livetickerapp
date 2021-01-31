@@ -24,8 +24,5 @@ Your app is ready to be deployed!
 
 ![Alt text](./live-ticker.png?raw=true)
 
-### Lighthouse Performance report
-
-![Alt text](./LightHousePerformanceReport.jpg?raw=true)
 
 
