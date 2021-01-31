@@ -20,7 +20,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
+#### App Screenshot
 
 ![Alt text](./live-ticker.png?raw=true)
+
+### Lighthouse Performance report
+
+![Alt text](./LightHousePerformanceReport.jpg?raw=true)
 
 
